@@ -66,3 +66,13 @@ export class DataService {
     return throwError(errorMessage);
   };
 }
+
+//CORS configuração
+// app.UseCors(options => 
+//   {
+//       options.SetIsOriginAllowed(origin => true);
+//       //options.AllowAnyOrigin();
+//       options.AllowAnyHeader();
+//       options.AllowAnyMethod();
+//       options.AllowCredentials();
+//   });
