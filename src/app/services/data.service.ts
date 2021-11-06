@@ -26,7 +26,7 @@ export class DataService {
 
   login() {
     const customerLogin = {
-      email: "", 
+      email: "",
       password: ""
     };
 
@@ -37,16 +37,16 @@ export class DataService {
   }
 
   getBillofExchanges(dataToken: DataToken) {
-    const options = { 
+    const options = {
       headers: new HttpHeaders(
-        { 
+        {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${dataToken.token}` 
+          'Authorization': `Bearer ${dataToken.token}`
         }),
         params: new HttpParams({fromString: "Skip=0&Take=15"}),
-        withCredentials: true 
+        withCredentials: true
       };
-      
+
     const urlBills = `${this.url}/api/BillOfExchange/v1/c00001/all`;
 
     return this.httpClient.get<BillOfExchange[]>(urlBills, options)
@@ -63,12 +63,12 @@ export class DataService {
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
     }
     console.log(errorMessage);
-    return throwError(errorMessage);
-  };
+    return throwError(() => errorMessage);
+  }
 }
 
 //CORS configuração
-// app.UseCors(options => 
+// app.UseCors(options =>
 //   {
 //       options.SetIsOriginAllowed(origin => true);
 //       //options.AllowAnyOrigin();
